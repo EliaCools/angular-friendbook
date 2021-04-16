@@ -1,0 +1,32 @@
+
+{{ friendModel | json }}<br/>
+{{friendForm.invalid}}
+<form #friendForm="ngForm" id="friends-form" novalidate (ngSubmit)="dataSend()">
+
+  <label for="firstName" > First name</label>
+  <input #firstName="ngModel" id="firstName" type ="text" name="firstName" [(ngModel)]="friendModel.fName"  required  pattern="[a-zA-Z]*" [ngClass]="{'invalid' : firstName.invalid && firstName.touched}"  >
+  <label for="lastName" > Last name</label>
+  <input #lastName="ngModel" id="lastName" type ="text" name="lastName"  [(ngModel)]="friendModel.lName" required pattern="[a-zA-Z]*"   [ngClass]="{'invalid' : lastName.invalid && lastName.touched}">
+  <label  for="email" > email</label>
+  <input #email="ngModel" id="email" type="email" name="email" ngModel [(ngModel)]="friendModel.email"  required  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"  [ngClass]="{'invalid' : email.invalid && email.touched}" >
+  <label  for="phone" > phone</label>
+  <input #phone="ngModel" id="phone" type="tel" name="phone" ngModel [(ngModel)]="friendModel.phone"  required  pattern="[+]?\b[0-9 ]*"  [ngClass]="{'invalid' : phone.invalid && phone.touched}" >
+
+  <label for="favouritelanguage"> favourite language </label>
+  <select name="favouritelanguage" id="favouritelanguage" #favLanguage="ngModel" [(ngModel)]="friendModel.favouritelanguage" required  [ngClass]="{'invalid' : favLanguage.invalid && favLanguage.touched}" >
+    <option *ngFor="let language of  languages"  value={{language}}> {{language}} </option>
+  </select>
+  <br/>
+  <button type="submit" [disabled]="friendForm.invalid" >submit</button>
+</form>
+
+<div *ngFor="let friend of allFriends">
+  <p>{{friend.fName}}
+    {{friend.lName}}
+    {{friend.email}}
+    {{friend.phone}}</p>
+
+
+</div>
+
+

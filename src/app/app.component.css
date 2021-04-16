@@ -1,0 +1,31 @@
+input[type=text],[type=email],[type=tel] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#friends-form{
+  width:50%;
+}
+
+.block{
+  display:block;
+}
+
+button{
+  height:20px;
+  width:60px;
+  border-radius:5px;
+  margin:20px 0 0 0 ;
+  box-sizing:border-box;
+}
+body{
+  margin:0 auto;
+  padding:10%;
+}
+
+
+.invalid{
+  border-color:red;
+}
